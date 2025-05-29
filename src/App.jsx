@@ -2,7 +2,7 @@ import { use, useState } from 'react'
 import './App.css'
 
 function App() {
-  const [nombre, setNombre] = useState('Pepito');
+  const [usuario, setUsuario] = useState({name: 'Juan', age: 30});
   const [products, setProduct] = useState([
     { id: 1, nombre: 'Producto 1', precio: 100 },
     { id: 2, nombre: 'Producto 2', precio: 200 },
@@ -10,7 +10,7 @@ function App() {
   ]);
 
   function cambiarNombre() {
-    setNombre('Juanito');
+    setUsuario({...usuario, name: 'Micaela'});
   }
 
   function nuevoProducto() {
@@ -18,7 +18,7 @@ function App() {
     const nuevo = {
       id,
       nombre: 'Producto ' + id,
-      precio: 400
+      precio: 100 * id
     };
     setProduct([...products, nuevo]);
   }
@@ -26,7 +26,8 @@ function App() {
   return (
     <>
       <h1>Hooks</h1>
-      <p>Bienvenido {nombre}</p>
+      <p>Bienvenido {usuario.name}</p>
+      <p>Edad: {usuario.age}</p>
       <button onClick={cambiarNombre} type='button'>Cambiar nombre</button>
       <button onClick={nuevoProducto} type='button'>Nuevo producto</button>
       <div>
